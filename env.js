@@ -39,7 +39,7 @@ function setSSL() {
       key: fs.readFileSync(env.SSL_KEY), cert: fs.readFileSync(env.SSL_CERT)
     };
     if (env.SSL_CA) {
-      var chainLines = fs.readFileSync(env.SSL_CA).split("\n");
+      var chainLines = fs.readFileSync(env.SSL_CA).split('\n');
       var cert = [];
       var ca = [];
       chainLines.forEach(function(line) {
