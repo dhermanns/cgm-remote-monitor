@@ -39,13 +39,13 @@ function setSSL() {
       key: fs.readFileSync(env.SSL_KEY), cert: fs.readFileSync(env.SSL_CERT)
     };
     if (env.SSL_CA) {
-      var chainLines = fs.readFileSync(env.SSL_CA).split('\n');
+      var chainLines = fs.readFileSync(env.SSL_CA, 'utf8').split('\n');
       var cert = [];
       var ca = [];
       chainLines.forEach(function(line) {
         cert.push(line);
         if (line.match(/-END CERTIFICATE-/)) {
-          ca.push(cert.join("\n"));
+          ca.push(cert.join('\n'));
           cert = [];
         }
       });
